@@ -46,11 +46,16 @@ public class NoticiaServicio {
     public void modificarNoticia(String titulo, String cuerpo, String foto)throws MiException{
         validar(titulo, cuerpo, foto);
         Optional<Noticia> respuesta=noticiarepositorio.findById(titulo);
+        System.out.println(respuesta.get());
         if(respuesta.isPresent()){
             Noticia noticia=respuesta.get();
-           // noticia.setTitulo(titulo);
+            noticia.setCuerpo(cuerpo);
+            noticia.setFoto(foto);
             noticiarepositorio.save(noticia);
         }
+    }
+    public Noticia getOne(String titulo){
+        return noticiarepositorio.getOne(titulo);
     }
     private void validar(String titulo, String cuerpo, String foto)throws MiException{
          if(titulo.isEmpty() || titulo==null){

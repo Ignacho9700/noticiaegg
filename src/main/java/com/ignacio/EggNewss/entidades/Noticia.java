@@ -59,6 +59,11 @@ public class Noticia {
     public void setAlta(Date alta) {
         this.alta = alta;
     }
+
+    @Override
+    public String toString() {
+        return "Noticia{" + "titulo=" + titulo + ", cuerpo=" + cuerpo + ", foto=" + foto + ", alta=" + alta + '}';
+    }
     
     
     

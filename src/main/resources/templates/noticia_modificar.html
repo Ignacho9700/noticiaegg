@@ -7,29 +7,28 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <header>
-        <div class ="container">
-            <h2>Carga la noticia aquî!</h2>         
-        </div>
-        </header>
     
         <div class ="container">
-            <form action="/noticia/registro" method="POST">
-            
-            <div class="form-group">
-                <input type="text" class="form-group" name="titulo" placeholder="Titulo de la noticia">  
+            <form class="formulario" th:action ="@{/noticia/modificar/__*{titulo}__}" method="POST" th:object="${noticia}">
+                                                            
+                <label class="nb-2">MODIFICAR NOTICIA</label>
+                
+                
+                <input hidden th:field="*{titulo}">
+           
+                 <div class="form-group my-3">
+                 <label class="nb-2">cuerpo</label>    
+                <input th:field="*{cuerpo}" type="text" class="form-control">  
             </div>
                  <div class="form-group">
-                <input type="text" class="form-group" name="cuerpo" placeholder="cuerpo de la noticia">  
-            </div>
-                 <div class="form-group">
-                <input type="text" class="form-group" name="foto" placeholder="url de la foto">  
+                 <label class="nb-2">url de la imagen</label>    
+                <input th:field="*{foto}" type="text" class="form-control">   
             </div>
                  
-            <button type="sumbit" class="btn btn-primary">Cargar</button>
-            </form>
+            <button type="sumbit" class="btn btn-primary">Actualizar</button>
+            </form> 
         </div>
-        <div th:if="${exito!=null}" class="card text-white bg-success mb-3" >
+     <div th:if="${exito!=null}" class="card text-white bg-success mb-3" >
 	    <div class="card-body">
                 <h5 class="card-title">Exito</h5>
 		<p class="card-text" th:text="${exito}"></p>
@@ -40,8 +39,8 @@
        		<h5 class="card-title">Error</h5>
 		<p class="card-text" th:text="${error}"></p>
 		</div>
-        </div>    
-    
+        </div>  
+       
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
